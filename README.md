@@ -15,5 +15,17 @@ Para el uso del servicio "servicexxx/", se tomo la ruta "servicexxx/all", para m
 
 Uso de layouts en thymeleaf.
 
+Las credenciales para el administrador son:
+correo: admin@gmail.com
+contraseña: admin
+
+
+Las credenciales para el usuario son:
+correo: user@gmail.com
+contraseña: user
+
+Los usuarios invitados pueden registrarse, teniendo permisos de usuarios y pudiendo donar.
+
+
 Debo ser sincero y aclarar que hay partes no están correctamente validades.
 
