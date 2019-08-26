@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css"
+		  th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+
+	<title>Registration</title>
+</head>
+<style>
+    .demo-container {
+        width: 100%;
+        max-width: 350px;
+        margin: 50px auto;
+    }
+
+    form {
+        margin: 30px;
+    }
+    input {
+        width: 200px;
+        margin: 10px auto;
+        display: block;
+    }
+
+</style>
+<body>
+
+<div layout:fragment="content" class="container">
+	<h4>Make a wish come true</h4>
+
+
+	<p>
+		Welcome <span sec:authentication="principal.username">User</span>
+	</p>
+
+		<form action="#" th:action="@{save}" th:object="${donation}" method="post", id="myForm">
+		<input type="hidden" name ="idDonation" id="idDonation" th:field="*{idDonation}" >
+			<div class="form-group">
+				<label for="idInstitution">Institution</label>
+				<select class="form-control" th:field="*{idInstitution}" name="idInstitution", id="idInstitution">
+					<option th:each="institucion : ${institutionList}" th:value="${institucion.idInstitution}" th:text="${institucion.name}">
+					</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="ammount">Ammount(Currency-USD)$</label>
+				<input  class="form-control" th:field="*{ammount}" id="ammount" name="ammount" type="number" min="0.01" step="0.01" max="2500" value="25.67" />
+			</div>
+            <div class="demo-container">
+                <div class="card-wrapper"></div>
+
+                <div class="form-container active">
+                    <form action="">
+                        <input class="form-control" placeholder="Card number" type="tel"  name="number" th:field="*{number}" id="number" >
+                        <input class="form-control" placeholder="Full name" type="text" name="name">
+                        <input class="form-control" placeholder="MM/YY" type="tel" name="expiry">
+                        <input class="form-control"placeholder="CVC" type="number" name="cvc">
+                    </form>
+                </div>
+
+			</div>
+
+		</form>
+
+
+	<input type="submit" form="myForm" class="btn btn-success" />
+
+
+
+    <script th:src="@{'/assets/js/card.js'}"></script>
+    <script>
+        new Card({
+            form: document.querySelector('form'),
+            container: '.card-wrapper'
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

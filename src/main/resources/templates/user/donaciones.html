@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+
+    <title>Registration</title>
+</head>
+<div layout:fragment="content" class="container">
+    <br>
+    <h2 th:if="${listDonaciones.isEmpty()}">You haven donated yet</h2>
+    <div th:if="${!listDonaciones.isEmpty()}">
+        <h2>Donations</h2>
+        <table class ="table" id="myTable">
+            <thead>
+            <tr>
+                <th>Institution</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>CC Number</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr th:each="donacion : ${listDonaciones}" >
+                <td th:text="${donacion.institution.name}"></td>
+                <td th:text="${donacion.ammount}"></td>
+                <td th:text="${donacion.fecha}"></td>
+                <td th:text="${donacion.number}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" type="text/css"
+		  th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+
+	<title>Registration</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+	<h2>Si ve esta página el redirect no funciona correctamente, por favor darle click a 'logout' y volver a entrar,
+	el menú de su rol se despelgará correctamente</h2>
+
+	<p>
+		Welcome <span sec:authentication="principal.username">User</span>
+	</p>
+	<div class="container">
+		<button id="myButton" class="float-left submit-button btn btn-success" >Donar</button>
+	</div>
+
+
+	<script type="text/javascript">
+		document.getElementById("myButton").onclick = function () {
+			location.href = window.origin + "/user/donate/donacion";
+		};
+	</script>
+</div>
+
+</body>
+</html>
