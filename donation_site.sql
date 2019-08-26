@@ -128,8 +128,8 @@ values (1, 1),
 
 insert into country (country_name)
 values ('El Salvador');
-insert into department (name)
-    value ('San Salvador');
+insert into department (id_country, name)
+    value (1,'San Salvador');
 insert into document(document_name) values ('dui'), ('pasaporte');
 insert into institution( name, id_country) values ('Glora Kriete', 1);
 

@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
-    private static final String ROLE_DONATOR = "ROLE_DONATOR";
+    private static final String ROLE_DONATOR = "ROLE_USER";
 
     @Autowired
     private UserRepository userRepository;
