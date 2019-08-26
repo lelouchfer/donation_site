@@ -1,13 +1,9 @@
 package com.teslus.donation.entities;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "donator")
@@ -35,5 +31,13 @@ public class Donator implements Serializable {
   @Column(name = "id_department")
   private Integer idDepartment;
 
-  
+  @ManyToOne
+  @JoinColumn(name = "id_country", referencedColumnName = "id_country",  insertable = false, updatable = false)
+  public Country country;
+
+  @ManyToOne
+  @JoinColumn(name = "id_user", referencedColumnName = "id_user",  insertable = false, updatable = false)
+  public User user;
+
+
 }
