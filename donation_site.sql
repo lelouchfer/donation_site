@@ -103,6 +103,7 @@ create table donation
     id_institution int,
     ammount        DECIMAL(13, 2),
     fecha          datetime,
+    cc_number	   nvarchar(20),
     foreign key (id_donator) references donator (id_donator),
     foreign key (id_institution) references institution (id_institution)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -130,7 +131,7 @@ values ('El Salvador');
 insert into department (name)
     value ('San Salvador');
 insert into document(document_name) values ('dui'), ('pasaporte');
-
+insert into institution( name, id_country) values ('Glora Kriete', 1);
 
 insert into donator (id_user,id_document,document_number,id_country,id_department) value(2,1,'12345678-1',1,1);
 
